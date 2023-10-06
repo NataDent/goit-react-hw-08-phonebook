@@ -58,7 +58,12 @@ export const contactsSlice = createSlice({
     [updateContact.fulfilled](state, action) {
       state.isLoading = false;
       state.error = null;
-      // Логіка оновлення контакту -???
+      state.items = state.items.map(contact => {
+        if (contact.id === action.payload.id) {
+          return action.payload;
+        }
+        return contact;
+      });
     },
   },
 });
