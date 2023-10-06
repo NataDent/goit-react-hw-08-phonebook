@@ -3,9 +3,13 @@ import { Filter } from './Filter/Filter';
 import { Section } from './Section/Section';
 import { ContactList } from './ContactList/ContactList';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectContacts, selectError, selectIsLoading } from 'redux/selectors';
+import {
+  selectContacts,
+  selectError,
+  selectIsLoading,
+} from 'redux/contacts/selectors';
 import { useEffect } from 'react';
-import { fetchContacts } from 'redux/operations';
+import { fetchContacts } from 'redux/contacts/operations';
 
 export const App = () => {
   const contacts = useSelector(selectContacts);
