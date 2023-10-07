@@ -15,12 +15,12 @@ import { selectContacts } from 'redux/contacts/selectors';
 const contactSchema = Yup.object().shape({
   name: Yup.string().min(2, 'Too short!').required('Required'),
   number: Yup.string()
-    .min(14, 'Too Short!')
-    .max(14, 'Too long!')
+    .min(9, 'Too Short!')
+    .max(9, 'Too long!')
     .required('The field cannot be empty')
     .matches(
-      /[0-9]{3}-[0-9]{3}-[0-9]{4}/,
-      'Number must be in the format (XXX)XXX-XX-XX'
+      /[0-9]{3}-[0-9]{2}-[0-9]{2}/,
+      'Number must be in the format XXX-XX-XX'
     ),
 });
 
