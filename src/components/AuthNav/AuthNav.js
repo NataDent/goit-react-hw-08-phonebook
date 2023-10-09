@@ -1,10 +1,16 @@
+import { HStack } from '@chakra-ui/react';
+import { Link as ChakraLink } from '@chakra-ui/react';
 import { NavLink } from 'react-router-dom';
 
 export const AuthNav = () => {
   return (
-    <div>
-      <NavLink to="/register">Register</NavLink>
-      <NavLink to="/login">Log In</NavLink>
-    </div>
+    <HStack spacing={5}>
+      <ChakraLink as={NavLink} to="/register">
+        Register
+      </ChakraLink>
+      <ChakraLink as={NavLink} to="/login">
+        Log In
+      </ChakraLink>
+    </HStack>
   );
 };

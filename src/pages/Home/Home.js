@@ -1,19 +1,16 @@
-import { ContactForm } from 'components/ContactForm/ContactForm';
-import { Section } from 'components/Section/Section';
+import { Container } from '@chakra-ui/react';
+import { Text } from '@chakra-ui/react';
 
 const Home = () => {
   return (
-    <div>
-      <h1>
+    <Container display="flex" justifyContent="center" alignItems="center">
+      <Text fontSize="5xl" color="brand.600" textAlign="center">
         Hello! Here you can store your contacts!{' '}
         <span role="img" aria-label="Greeting icon">
-          💁‍♀️🧏‍♀️📋🖍
+          🧏‍♀️📋🖍
         </span>
-      </h1>
-      <Section title="Phonebook">
-        <ContactForm />
-      </Section>
-    </div>
+      </Text>
+    </Container>
   );
 };
 

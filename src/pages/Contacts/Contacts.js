@@ -1,6 +1,5 @@
 import { ContactList } from 'components/ContactList/ContactList';
 import { Filter } from 'components/Filter/Filter';
-import { Section } from 'components/Section/Section';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchContacts } from 'redux/contacts/operations';
@@ -21,11 +20,11 @@ const Contacts = () => {
   }, [dispatch]);
 
   return (
-    <Section title="Contacts">
+    <>
       <Filter />
       {isLoading && !error && <b>Request in progress...</b>}
       {contacts ? <ContactList /> : <p>No contacts</p>}
-    </Section>
+    </>
   );
 };
 

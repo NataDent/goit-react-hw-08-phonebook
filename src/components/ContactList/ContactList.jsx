@@ -2,6 +2,7 @@ import { selectFilteredContacts } from 'redux/contacts/selectors';
 import { Button, ContactListStyled, ListItem } from './ContactList.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteContact } from 'redux/contacts/operations';
+import { Helmet } from 'react-helmet';
 
 export const ContactList = () => {
   const dispatch = useDispatch();
@@ -12,6 +13,9 @@ export const ContactList = () => {
 
   return (
     <ContactListStyled>
+      <Helmet>
+        <title>Your contacts</title>
+      </Helmet>
       {filteredContacts.map(({ id, name, number }) => (
         <ListItem key={id}>
           <p>
