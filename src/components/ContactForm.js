@@ -51,7 +51,7 @@ export const ContactForm = () => {
   };
 
   return (
-    <Box maxW="50%" mx="auto">
+    <Box maxW="50%" mx="auto" p={5}>
       <Heading fontSize="3xl" color="brand.600" textAlign="center" mb={5}>
         Create A Contact
       </Heading>

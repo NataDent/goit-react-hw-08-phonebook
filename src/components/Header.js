@@ -6,7 +6,7 @@ import { useAuth } from './hooks/useAuth';
 
 export const Header = () => {
   const { isLoggedIn } = useAuth();
-  console.log(isLoggedIn);
+
   return (
     <Box
       as="header"

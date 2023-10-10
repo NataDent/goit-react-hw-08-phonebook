@@ -22,7 +22,14 @@ export const ContactList = () => {
   const handleDelete = id => dispatch(deleteContact(id));
 
   return (
-    <UnorderedList display="flex" flexDirection="column" mt={5} px={10}>
+    <UnorderedList
+      display="flex"
+      flexDirection="column"
+      mt={5}
+      px={5}
+      maxW="50%"
+      mx="auto"
+    >
       <Heading fontSize="3xl" color="brand.600" textAlign="center" mb={5}>
         Your Contacts
       </Heading>
