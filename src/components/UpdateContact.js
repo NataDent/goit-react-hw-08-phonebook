@@ -46,7 +46,7 @@ export const UpdateContact = () => {
       alert('Such number already exists');
       return;
     }
-    dispatch(updateContact(updatedContact));
+    dispatch(updateContact(editedContact));
     actions.resetForm();
   };
   return (
