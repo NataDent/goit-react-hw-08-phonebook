@@ -52,7 +52,7 @@ export const UpdateContact = () => {
   return (
     <Box maxW="50%" mx="auto">
       <Heading fontSize="3xl" color="brand.600" textAlign="center" mb={5}>
-        Update A Contact
+        Update The Contact
       </Heading>
 
       <Formik

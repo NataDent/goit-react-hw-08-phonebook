@@ -41,6 +41,7 @@ export const ContactList = () => {
           <ButtonGroup gap="4">
             <Button
               as={NavLink}
+              to="/contacts/{contactId}"
               variant="solid"
               bgColor="brand.100"
               color="brand.900"
