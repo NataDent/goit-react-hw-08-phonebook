@@ -1,5 +1,12 @@
 import { Field, Formik } from 'formik';
-import { FormErrorMessage, Input } from '@chakra-ui/react';
+import {
+  Button,
+  FormControl,
+  FormErrorMessage,
+  FormLabel,
+  Input,
+  VStack,
+} from '@chakra-ui/react';
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectContacts } from 'redux/contacts/selectors';
@@ -21,20 +28,12 @@ export const UpdateContact = () => {
   const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
 
-  const handleSubmit = (contactId, actions) => {
-    const setUpdatedContact = () => {
-      const updatedContact = {
-        id: contactId,
-        name: updatedContact.name,
-        number: updatedContact.number,
-      };
-      return updatedContact;
-    };
+  const handleSubmit = (editedContact, actions) => {
     const existingName = contacts.find(
-      contact => contact.name === updatedContact.name
+      contact => contact.name === editedContact.name
     );
     const existingNumber = contacts.find(
-      contact => contact.number === updatedContact.number
+      contact => contact.number === editedContact.number
     );
 
     if (existingName) {
@@ -45,7 +44,7 @@ export const UpdateContact = () => {
       alert('Such number already exists');
       return;
     }
-    dispatch(updateContact(contactId));
+    dispatch(updateContact(updatedContact));
     actions.resetForm();
   };
   return (

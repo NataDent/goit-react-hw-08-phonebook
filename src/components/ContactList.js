@@ -48,7 +48,7 @@ export const ContactList = () => {
               type="button"
               onClick={() => handleUpdate(id)}
             >
-              Update
+              Edit
             </Button>
             <Button
               variant="solid"
