@@ -1,19 +1,9 @@
-import { Formik, Field } from 'formik';
-import {
-  Box,
-  Button,
-  FormControl,
-  FormErrorMessage,
-  FormLabel,
-  Heading,
-  Input,
-  VStack,
-} from '@chakra-ui/react';
+import { Field, Formik } from 'formik';
+import { FormErrorMessage, Input } from '@chakra-ui/react';
 import * as Yup from 'yup';
-
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from 'redux/contacts/operations';
 import { selectContacts } from 'redux/contacts/selectors';
+import { updateContact } from 'redux/contacts/operations';
 
 const contactSchema = Yup.object().shape({
   name: Yup.string().min(2, 'Too short!').required('Required'),
@@ -27,16 +17,24 @@ const contactSchema = Yup.object().shape({
     ),
 });
 
-export const ContactForm = () => {
+export const UpdateContact = () => {
   const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
 
-  const handleSubmit = (newContact, actions) => {
+  const handleSubmit = (contactId, actions) => {
+    const setUpdatedContact = () => {
+      const updatedContact = {
+        id: contactId,
+        name: updatedContact.name,
+        number: updatedContact.number,
+      };
+      return updatedContact;
+    };
     const existingName = contacts.find(
-      contact => contact.name === newContact.name
+      contact => contact.name === updatedContact.name
     );
     const existingNumber = contacts.find(
-      contact => contact.number === newContact.number
+      contact => contact.number === updatedContact.number
     );
 
     if (existingName) {
@@ -47,20 +45,19 @@ export const ContactForm = () => {
       alert('Such number already exists');
       return;
     }
-    dispatch(addContact(newContact));
+    dispatch(updateContact(contactId));
     actions.resetForm();
   };
-
   return (
     <Box maxW="50%" mx="auto">
       <Heading fontSize="3xl" color="brand.600" textAlign="center" mb={5}>
-        Create A Contact
+        Update A Contact
       </Heading>
 
       <Formik
         initialValues={{
-          name: '',
-          number: '',
+          name: contact.name,
+          number: contact.number,
         }}
         validationSchema={contactSchema}
         onSubmit={handleSubmit}
