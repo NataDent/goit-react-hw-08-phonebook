@@ -1,9 +1,11 @@
 import { Field, Formik } from 'formik';
 import {
+  Box,
   Button,
   FormControl,
   FormErrorMessage,
   FormLabel,
+  Heading,
   Input,
   VStack,
 } from '@chakra-ui/react';
@@ -55,8 +57,8 @@ export const UpdateContact = () => {
 
       <Formik
         initialValues={{
-          name: contact.name,
-          number: contact.number,
+          name: updateContact.name,
+          number: updateContact.number,
         }}
         validationSchema={contactSchema}
         onSubmit={handleSubmit}
