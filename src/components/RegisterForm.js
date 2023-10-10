@@ -20,7 +20,7 @@ export const RegisterForm = () => {
 
   return (
     <>
-      <Heading fontSize="4xl" color="brand.600" textAlign="center">
+      <Heading fontSize="4xl" color="brand.600" textAlign="center" mb={5}>
         Register Page
       </Heading>
       <Stack
@@ -28,10 +28,12 @@ export const RegisterForm = () => {
         onSubmit={handleSubmit}
         autoComplete="off"
         spacing={5}
-        p={10}
+        m="auto"
+        maxW="50%"
       >
         <Input
           placeholder="Username"
+          _placeholder={{ color: 'brand.300' }}
           size="lg"
           variant="outline"
           focusBorderColor="brand.600"
@@ -41,6 +43,7 @@ export const RegisterForm = () => {
 
         <Input
           placeholder="Email"
+          _placeholder={{ color: 'brand.300' }}
           type="email"
           name="email"
           size="lg"
@@ -50,6 +53,7 @@ export const RegisterForm = () => {
 
         <Input
           placeholder="Password"
+          _placeholder={{ color: 'brand.300' }}
           size="lg"
           variant="outline"
           focusBorderColor="brand.600"
@@ -61,6 +65,7 @@ export const RegisterForm = () => {
           type="submit"
           variant="solid"
           bgColor="brand.100"
+          color="brand.900"
           _hover={{ bgColor: 'brand.700', color: '#fff' }}
         >
           Register

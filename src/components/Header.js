@@ -1,7 +1,7 @@
 import { Box, Container } from '@chakra-ui/react';
-import { AuthNav } from './AuthNav/AuthNav';
-import { Navigation } from './Navigation/Navigation';
-import { UserMenu } from './UserMenu/UserMenu';
+import { AuthNav } from './AuthNav';
+import { Navigation } from './Navigation';
+import { UserMenu } from './UserMenu';
 import { useAuth } from './hooks/useAuth';
 
 export const Header = () => {
@@ -16,6 +16,7 @@ export const Header = () => {
       mb={10}
       borderBottom="2px"
       borderColor="brand.900"
+      p={2}
     >
       <Container
         maxW="container.lg"

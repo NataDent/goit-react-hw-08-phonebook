@@ -19,7 +19,7 @@ export const LoginForm = () => {
 
   return (
     <>
-      <Heading ontSize="4xl" color="brand.600" textAlign="center">
+      <Heading ontSize="4xl" color="brand.600" textAlign="center" mb={5}>
         Log In Page
       </Heading>
       <Stack
@@ -27,7 +27,8 @@ export const LoginForm = () => {
         onSubmit={handleSubmit}
         autoComplete="off"
         spacing={5}
-        p={10}
+        m="auto"
+        maxW="50%"
       >
         <Input
           placeholder="Email"
@@ -40,6 +41,7 @@ export const LoginForm = () => {
 
         <Input
           placeholder="Password"
+          _placeholder={{ color: 'brand.300' }}
           size="lg"
           variant="outline"
           focusBorderColor="brand.600"
@@ -52,6 +54,7 @@ export const LoginForm = () => {
           variant="solid"
           bgColor="brand.100"
           _hover={{ bgColor: 'brand.700', color: '#fff' }}
+          color="brand.900"
         >
           Log In
         </Button>

@@ -1,5 +1,7 @@
-import { ContactList } from 'components/ContactList/ContactList';
-import { Filter } from 'components/Filter/Filter';
+import { Text } from '@chakra-ui/react';
+import { ContactForm } from 'components/ContactForm';
+import { ContactList } from 'components/ContactList';
+import { Filter } from 'components/Filter';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchContacts } from 'redux/contacts/operations';
@@ -21,9 +23,11 @@ const Contacts = () => {
 
   return (
     <>
+      <ContactForm />
+
       <Filter />
-      {isLoading && !error && <b>Request in progress...</b>}
-      {contacts ? <ContactList /> : <p>No contacts</p>}
+      {isLoading && !error && <Text fontSize={20}>Request in progress...</Text>}
+      {contacts ? <ContactList /> : <Text fontSize={20}>No contacts</Text>}
     </>
   );
 };

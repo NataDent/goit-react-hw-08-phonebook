@@ -1,4 +1,4 @@
-import { LoginForm } from 'components/LogInForm/LogInForm';
+import { LoginForm } from 'components/LogInForm';
 import { Helmet } from 'react-helmet';
 
 const LogIn = () => {

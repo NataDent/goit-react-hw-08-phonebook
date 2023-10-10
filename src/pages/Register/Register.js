@@ -1,4 +1,4 @@
-import { RegisterForm } from 'components/RegisterForm/RegisterForm';
+import { RegisterForm } from 'components/RegisterForm';
 import { Helmet } from 'react-helmet';
 
 const Register = () => {
