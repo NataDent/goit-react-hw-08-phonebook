@@ -27,14 +27,14 @@ export const Navigation = () => {
         <ChakraLink
           as={NavLink}
           to="/contacts"
-          // fontSize={20}
-          // fontWeight="bold"
-          // color="brand.900"
-          // textDecoration="none"
-          // _activeLink={{
-          //   scale: '1.1',
-          //   color: 'brand.700',
-          // }}
+          fontSize={20}
+          fontWeight="bold"
+          color="brand.900"
+          textDecoration="none"
+          _activeLink={{
+            scale: '1.1',
+            color: 'brand.700',
+          }}
           variant={brandPrimary}
         >
           Contacts

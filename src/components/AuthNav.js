@@ -8,11 +8,11 @@ export const AuthNav = () => {
       <ChakraLink
         as={NavLink}
         to="/register"
-        fontSize={10}
-        fontWeight={3}
+        fontSize={20}
+        fontWeight="bold"
         color="brand.900"
         textDecoration="none"
-        _active={{
+        _activeLink={{
           scale: '1.1',
           color: 'brand.700',
         }}
@@ -22,11 +22,11 @@ export const AuthNav = () => {
       <ChakraLink
         as={NavLink}
         to="/login"
-        fontSize={10}
-        fontWeight={3}
+        fontSize={20}
+        fontWeight="bold"
         color="brand.900"
         textDecoration="none"
-        _active={{
+        _activeLink={{
           scale: '1.1',
           color: 'brand.700',
         }}
