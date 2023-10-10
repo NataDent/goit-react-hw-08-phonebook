@@ -107,7 +107,7 @@ export const UpdateContact = () => {
                 mx="auto"
                 color="brand.900"
               >
-                Add contact
+                Update
               </Button>
             </VStack>
           </form>

@@ -1,9 +1,8 @@
-import { Formik, Field } from 'formik';
+import { Formik, Field, ErrorMessage } from 'formik';
 import {
   Box,
   Button,
   FormControl,
-  FormErrorMessage,
   FormLabel,
   Heading,
   Input,
@@ -82,7 +81,7 @@ export const ContactForm = () => {
                   variant="outline"
                   focusBorderColor="brand.600"
                 />
-                <FormErrorMessage>{errors.name}</FormErrorMessage>
+                <ErrorMessage component="div" name="name" />
               </FormControl>
 
               <FormControl>
@@ -99,7 +98,7 @@ export const ContactForm = () => {
                   variant="outline"
                   focusBorderColor="brand.600"
                 />
-                <FormErrorMessage>{errors.number}</FormErrorMessage>
+                <ErrorMessage component="div" name="name" />
               </FormControl>
               <Button
                 type="submit"
