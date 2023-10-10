@@ -2,7 +2,6 @@ import { HStack } from '@chakra-ui/react';
 import { useAuth } from 'components/hooks/useAuth';
 import { NavLink } from 'react-router-dom';
 import { Link as ChakraLink } from '@chakra-ui/react';
-import { brandPrimary } from 'components/styles';
 
 export const Navigation = () => {
   const { isLoggedIn } = useAuth();
@@ -16,9 +15,9 @@ export const Navigation = () => {
         fontWeight="bold"
         color="brand.900"
         textDecoration="none"
+        _hover={{ transform: 'scale(1.01)' }}
         _activeLink={{
-          scale: '1.1',
-          color: 'brand.700',
+          color: 'brand.600',
         }}
       >
         Home
@@ -31,11 +30,10 @@ export const Navigation = () => {
           fontWeight="bold"
           color="brand.900"
           textDecoration="none"
+          _hover={{ transform: 'scale(1.01)' }}
           _activeLink={{
-            scale: '1.1',
-            color: 'brand.700',
+            color: 'brand.600',
           }}
-          variant={brandPrimary}
         >
           Contacts
         </ChakraLink>

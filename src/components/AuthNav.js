@@ -12,9 +12,9 @@ export const AuthNav = () => {
         fontWeight="bold"
         color="brand.900"
         textDecoration="none"
+        _hover={{ transform: 'scale(1.01)' }}
         _activeLink={{
-          scale: '1.1',
-          color: 'brand.700',
+          color: 'brand.600',
         }}
       >
         Register
@@ -26,9 +26,9 @@ export const AuthNav = () => {
         fontWeight="bold"
         color="brand.900"
         textDecoration="none"
+        _hover={{ transform: 'scale(1.01)' }}
         _activeLink={{
-          scale: '1.1',
-          color: 'brand.700',
+          color: 'brand.600',
         }}
       >
         Log In

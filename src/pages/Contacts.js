@@ -1,4 +1,3 @@
-import { Text } from '@chakra-ui/react';
 import { ContactForm } from 'components/ContactForm';
 import { ContactList } from 'components/ContactList';
 import { Filter } from 'components/Filter';
@@ -26,8 +25,8 @@ const Contacts = () => {
       <ContactForm />
 
       <Filter />
-      {isLoading && !error && <Text fontSize={20}>Request in progress...</Text>}
-      {contacts ? <ContactList /> : <Text fontSize={20}>No contacts</Text>}
+      {isLoading && !error && <p fontSize={20}>Request in progress...</p>}
+      {contacts ? <ContactList /> : <p fontSize={20}>No contacts</p>}
     </>
   );
 };
