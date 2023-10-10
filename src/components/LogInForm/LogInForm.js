@@ -1,3 +1,4 @@
+import { Button, Heading, Input, Stack } from '@chakra-ui/react';
 import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/operations';
 
@@ -17,16 +18,44 @@ export const LoginForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} autoComplete="off">
-      <label>
-        Email
-        <input type="email" name="email" />
-      </label>
-      <label>
-        Password
-        <input type="password" name="password" />
-      </label>
-      <button type="submit">Log In</button>
-    </form>
+    <>
+      <Heading ontSize="4xl" color="brand.600" textAlign="center">
+        Log In Page
+      </Heading>
+      <Stack
+        as="form"
+        onSubmit={handleSubmit}
+        autoComplete="off"
+        spacing={5}
+        p={10}
+      >
+        <Input
+          placeholder="Email"
+          type="email"
+          name="email"
+          size="lg"
+          variant="outline"
+          focusBorderColor="brand.600"
+        />
+
+        <Input
+          placeholder="Password"
+          size="lg"
+          variant="outline"
+          focusBorderColor="brand.600"
+          type="password"
+          name="password"
+        />
+
+        <Button
+          type="submit"
+          variant="solid"
+          bgColor="brand.100"
+          _hover={{ bgColor: 'brand.700', color: '#fff' }}
+        >
+          Log In
+        </Button>
+      </Stack>
+    </>
   );
 };

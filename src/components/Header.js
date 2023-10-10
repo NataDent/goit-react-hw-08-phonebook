@@ -6,14 +6,14 @@ import { useAuth } from './hooks/useAuth';
 
 export const Header = () => {
   const { isLoggedIn } = useAuth();
-
+  console.log(isLoggedIn);
   return (
     <Box
       as="header"
       display="flex"
       justifyContent="center"
       align-items="center"
-      mb={20}
+      mb={10}
       borderBottom="2px"
       borderColor="brand.900"
     >
