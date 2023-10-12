@@ -1,7 +1,7 @@
 import { selectFilteredContacts } from 'redux/contacts/selectors';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteContact, updateContact } from 'redux/contacts/operations';
+import { deleteContact } from 'redux/contacts/operations';
 
 import {
   Heading,
@@ -10,15 +10,15 @@ import {
   Button,
   Text,
   ButtonGroup,
+  useDisclosure,
 } from '@chakra-ui/react';
-import { NavLink } from 'react-router-dom';
 
 export const ContactList = () => {
+  const { onOpen } = useDisclosure();
   const dispatch = useDispatch();
 
   const filteredContacts = useSelector(selectFilteredContacts);
 
-  const handleUpdate = id => dispatch(updateContact(id));
   const handleDelete = id => dispatch(deleteContact(id));
 
   return (
@@ -47,14 +47,12 @@ export const ContactList = () => {
           </Text>
           <ButtonGroup gap="4">
             <Button
-              as={NavLink}
-              to="/contacts/{contactId}"
               variant="solid"
               bgColor="brand.100"
               color="brand.900"
               _hover={{ bgColor: 'brand.700', color: '#fff' }}
               type="button"
-              onClick={() => handleUpdate(id)}
+              onClick={onOpen}
             >
               Edit
             </Button>
