@@ -32,8 +32,18 @@ const Contacts = () => {
       <ContactForm />
 
       <Filter />
-      {isLoading && !error && <p fontSize={20}>Request in progress...</p>}
-      {contacts ? <ContactList /> : <p fontSize={20}>No contacts</p>}
+      {isLoading && !error && (
+        <b fontSize={20} color="brand.900">
+          Request in progress...
+        </b>
+      )}
+      {contacts ? (
+        <ContactList />
+      ) : (
+        <b fontSize={20} color="brand.900">
+          No contacts
+        </b>
+      )}
       {isModal && <ModalWindow onClose={toggleModal} />}
     </>
   );

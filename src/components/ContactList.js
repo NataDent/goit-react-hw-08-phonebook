@@ -14,11 +14,9 @@ import {
 } from '@chakra-ui/react';
 
 export const ContactList = () => {
-  const { onOpen } = useDisclosure();
+  const { isOpen, onOpen } = useDisclosure();
   const dispatch = useDispatch();
-
   const filteredContacts = useSelector(selectFilteredContacts);
-
   const handleDelete = id => dispatch(deleteContact(id));
 
   return (
@@ -41,11 +39,12 @@ export const ContactList = () => {
           justifyContent="space-between"
           p={1}
           listStyle="none"
+          onClick={isOpen}
         >
           <Text fontSize={18} fontWeight="bold" color="brand.900">
             {name}: {number}
           </Text>
-          <ButtonGroup gap="4">
+          <ButtonGroup gap={1}>
             <Button
               variant="solid"
               bgColor="brand.100"
