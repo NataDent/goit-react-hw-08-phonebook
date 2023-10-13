@@ -1,22 +1,12 @@
 import { selectFilteredContacts } from 'redux/contacts/selectors';
-import { useDispatch, useSelector } from 'react-redux';
-import { deleteContact } from 'redux/contacts/operations';
-import {
-  Heading,
-  UnorderedList,
-  ListItem,
-  Button,
-  Text,
-  useDisclosure,
-  HStack,
-} from '@chakra-ui/react';
-import { ModalWindow } from './Modal';
+import { useSelector } from 'react-redux';
+
+import { Heading, UnorderedList } from '@chakra-ui/react';
+
+import { ContactListItem } from './ContactListItem';
 
 export const ContactList = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const dispatch = useDispatch();
   const filteredContacts = useSelector(selectFilteredContacts);
-  const handleDelete = id => dispatch(deleteContact(id));
 
   return (
     <UnorderedList
@@ -32,42 +22,7 @@ export const ContactList = () => {
       </Heading>
 
       {filteredContacts.map(({ id, name, number }) => (
-        <ListItem key={id} display="flex" justifyContent="space-between" p={1}>
-          <Text fontSize={18} fontWeight="bold" color="brand.900">
-            {name}: {number}
-          </Text>
-          <HStack gap={1}>
-            <Button
-              variant="solid"
-              bgColor="brand.100"
-              color="brand.900"
-              _hover={{ bgColor: 'brand.700', color: '#fff' }}
-              type="button"
-              onClick={onOpen}
-            >
-              Edit
-            </Button>
-            <Button
-              variant="solid"
-              bgColor="brand.100"
-              color="brand.900"
-              _hover={{ bgColor: 'brand.700', color: '#fff' }}
-              type="button"
-              onClick={() => handleDelete(id)}
-            >
-              Delete
-            </Button>
-          </HStack>
-          {isOpen && (
-            <ModalWindow
-              isOpen={isOpen}
-              name={name}
-              number={number}
-              onClose={onClose}
-              id={id}
-            />
-          )}
-        </ListItem>
+        <ContactListItem id={id} name={name} number={number} />
       ))}
     </UnorderedList>
   );
