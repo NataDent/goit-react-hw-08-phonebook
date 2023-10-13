@@ -7,16 +7,18 @@ import {
   ListItem,
   Button,
   Text,
-  useDisclosure,
   HStack,
 } from '@chakra-ui/react';
 import { ModalWindow } from './Modal';
+import { useState } from 'react';
 
 export const ContactList = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [isOpen, setIsOpen] = useState(false);
   const dispatch = useDispatch();
   const filteredContacts = useSelector(selectFilteredContacts);
   const handleDelete = id => dispatch(deleteContact(id));
+
+  const toggleModal = setIsOpen(prev => !prev);
 
   return (
     <UnorderedList
@@ -43,7 +45,7 @@ export const ContactList = () => {
               color="brand.900"
               _hover={{ bgColor: 'brand.700', color: '#fff' }}
               type="button"
-              onClick={onOpen}
+              onClick={toggleModal}
             >
               Edit
             </Button>
@@ -63,7 +65,7 @@ export const ContactList = () => {
               isOpen={isOpen}
               name={name}
               number={number}
-              onClose={onClose}
+              onClose={toggleModal}
               id={id}
             />
           )}
