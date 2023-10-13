@@ -36,25 +36,9 @@ const contactSchema = Yup.object().shape({
 });
 
 export const ModalWindow = ({ isOpen, name, number, onClose, id }) => {
-  //   const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
 
   const handleSubmit = (editedContact, actions) => {
-    // const existingName = contacts.find(
-    //   contact => contact.name === editedContact.name
-    // );
-    // const existingNumber = contacts.find(
-    //   contact => contact.number === editedContact.number
-    // );
-
-    // if (existingName) {
-    //   alert('Such name  already exists');
-    //   return;
-    // }
-    // if (existingNumber) {
-    //   alert('Such number already exists');
-    //   return;
-    // }
     dispatch(
       updateContact({ ...editedContact, id }).then(() => {
         onClose();
@@ -87,7 +71,7 @@ export const ModalWindow = ({ isOpen, name, number, onClose, id }) => {
             onSubmit={handleSubmit}
           >
             {() => (
-              <Form>
+              <Form autoComplete="true">
                 <VStack
                   autoComplete="true"
                   spacing={5}
@@ -112,7 +96,7 @@ export const ModalWindow = ({ isOpen, name, number, onClose, id }) => {
                   </FormControl>
 
                   <FormControl>
-                    <FormLabel htmlFor="phone" color="brand.900">
+                    <FormLabel htmlFor="number" color="brand.900">
                       Phone number
                     </FormLabel>
                     <Field
@@ -144,20 +128,6 @@ export const ModalWindow = ({ isOpen, name, number, onClose, id }) => {
         </ModalBody>
 
         <ModalFooter>
-          {/* <Button
-              onClose={() => {
-                onClose();
-              }}
-              type="submit"
-              variant="solid"
-              bgColor="brand.100"
-              _hover={{ bgColor: 'brand.700', color: '#fff' }}
-              mx="auto"
-              color="brand.900"
-              mr={3}
-            >
-              Save
-            </Button> */}
           <Button
             onClick={() => {
               onClose();

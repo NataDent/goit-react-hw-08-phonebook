@@ -65,7 +65,7 @@ export const ContactForm = () => {
         onSubmit={handleSubmit}
       >
         {() => (
-          <Form>
+          <Form autoComplete="true">
             <VStack autoComplete="true" spacing={5} m="auto" align="flex-start">
               <FormControl>
                 <FormLabel htmlFor="name" color="brand.900">
@@ -85,7 +85,7 @@ export const ContactForm = () => {
               </FormControl>
 
               <FormControl>
-                <FormLabel htmlFor="phone" color="brand.900">
+                <FormLabel htmlFor="number" color="brand.900">
                   Phone number
                 </FormLabel>
                 <Field
