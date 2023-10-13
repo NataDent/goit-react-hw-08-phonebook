@@ -66,7 +66,7 @@ export const ContactForm = () => {
       >
         {() => (
           <Form autoComplete="true">
-            <VStack autoComplete="true" spacing={5} m="auto" align="flex-start">
+            <VStack spacing={5} m="auto" align="flex-start">
               <FormControl>
                 <FormLabel htmlFor="name" color="brand.900">
                   Name

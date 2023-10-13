@@ -14,12 +14,10 @@ import {
 } from '@chakra-ui/react';
 import { ErrorMessage, Field, Formik, Form } from 'formik';
 import React from 'react';
-
 import { createPortal } from 'react-dom';
 import * as Yup from 'yup';
 import { updateContact } from 'redux/contacts/operations';
 import { useDispatch } from 'react-redux';
-// import { selectContacts } from 'redux/contacts/selectors';
 
 const modalRoot = document.querySelector('#modal-root');
 
@@ -38,7 +36,7 @@ const contactSchema = Yup.object().shape({
 export const ModalWindow = ({ isOpen, name, number, onClose, id }) => {
   const dispatch = useDispatch();
 
-  const handleSubmit = (editedContact, actions) => {
+  const handleUpdate = (editedContact, actions) => {
     dispatch(
       updateContact({ ...editedContact, id }).then(() => {
         onClose();
@@ -71,16 +69,11 @@ export const ModalWindow = ({ isOpen, name, number, onClose, id }) => {
               number,
             }}
             validationSchema={contactSchema}
-            onSubmit={handleSubmit}
+            onSubmit={handleUpdate}
           >
             {() => (
               <Form autoComplete="true">
-                <VStack
-                  autoComplete="true"
-                  spacing={5}
-                  m="auto"
-                  align="flex-start"
-                >
+                <VStack spacing={5} m="auto" align="flex-start">
                   <FormControl>
                     <FormLabel htmlFor="name" color="brand.900">
                       Name
