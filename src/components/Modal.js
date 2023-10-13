@@ -1,6 +1,5 @@
 import {
   Button,
-  ButtonGroup,
   FormControl,
   FormLabel,
   Input,
@@ -128,7 +127,7 @@ export const ModalWindow = ({ isOpen, name, number, onClose, id }) => {
                     />
                     <ErrorMessage component="div" name="name" />
                   </FormControl>
-                  {/* <Button
+                  <Button
                     type="submit"
                     variant="solid"
                     bgColor="brand.100"
@@ -137,7 +136,7 @@ export const ModalWindow = ({ isOpen, name, number, onClose, id }) => {
                     color="brand.900"
                   >
                     Update contact
-                  </Button> */}
+                  </Button>
                 </VStack>
               </Form>
             )}
@@ -145,8 +144,7 @@ export const ModalWindow = ({ isOpen, name, number, onClose, id }) => {
         </ModalBody>
 
         <ModalFooter>
-          <ButtonGroup display="flex">
-            <Button
+          {/* <Button
               onClose={() => {
                 onClose();
               }}
@@ -159,21 +157,20 @@ export const ModalWindow = ({ isOpen, name, number, onClose, id }) => {
               mr={3}
             >
               Save
-            </Button>
-            <Button
-              onClick={() => {
-                onClose();
-              }}
-              variant="solid"
-              bgColor="brand.100"
-              _hover={{ bgColor: 'brand.700', color: '#fff' }}
-              mx="auto"
-              color="brand.900"
-              mr={3}
-            >
-              Cancel
-            </Button>
-          </ButtonGroup>
+            </Button> */}
+          <Button
+            onClick={() => {
+              onClose();
+            }}
+            variant="solid"
+            bgColor="brand.100"
+            _hover={{ bgColor: 'brand.700', color: '#fff' }}
+            mx="auto"
+            color="brand.900"
+            mr={3}
+          >
+            Cancel
+          </Button>
         </ModalFooter>
       </ModalContent>
     </Modal>,

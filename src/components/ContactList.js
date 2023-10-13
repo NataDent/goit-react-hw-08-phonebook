@@ -32,13 +32,7 @@ export const ContactList = () => {
       </Heading>
 
       {filteredContacts.map(({ id, name, number }) => (
-        <ListItem
-          key={id}
-          display="flex"
-          justifyContent="space-between"
-          p={1}
-          onClick={onOpen}
-        >
+        <ListItem key={id} display="flex" justifyContent="space-between" p={1}>
           <Text fontSize={18} fontWeight="bold" color="brand.900">
             {name}: {number}
           </Text>
@@ -49,7 +43,7 @@ export const ContactList = () => {
               color="brand.900"
               _hover={{ bgColor: 'brand.700', color: '#fff' }}
               type="button"
-              onClick={isOpen}
+              onClick={onOpen}
             >
               Edit
             </Button>
