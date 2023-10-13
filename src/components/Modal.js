@@ -1,5 +1,6 @@
 import {
   Button,
+  ButtonGroup,
   FormControl,
   FormLabel,
   Input,
@@ -11,16 +12,15 @@ import {
   ModalHeader,
   ModalOverlay,
   VStack,
-  useDisclosure,
 } from '@chakra-ui/react';
-import { ErrorMessage, Field, Formik } from 'formik';
+import { ErrorMessage, Field, Formik, Form } from 'formik';
 import React from 'react';
-import { Form } from 'react-router-dom';
+
 import { createPortal } from 'react-dom';
 import * as Yup from 'yup';
 import { updateContact } from 'redux/contacts/operations';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectContacts } from 'redux/contacts/selectors';
+import { useDispatch } from 'react-redux';
+// import { selectContacts } from 'redux/contacts/selectors';
 
 const modalRoot = document.querySelector('#modal-root');
 
@@ -36,28 +36,31 @@ const contactSchema = Yup.object().shape({
     ),
 });
 
-export const ModalWindow = () => {
-  const { isOpen, onClose } = useDisclosure();
-  const contacts = useSelector(selectContacts);
+export const ModalWindow = ({ isOpen, name, number, onClose, id }) => {
+  //   const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
 
   const handleSubmit = (editedContact, actions) => {
-    const existingName = contacts.find(
-      contact => contact.name === editedContact.name
-    );
-    const existingNumber = contacts.find(
-      contact => contact.number === editedContact.number
-    );
+    // const existingName = contacts.find(
+    //   contact => contact.name === editedContact.name
+    // );
+    // const existingNumber = contacts.find(
+    //   contact => contact.number === editedContact.number
+    // );
 
-    if (existingName) {
-      alert('Such name  already exists');
-      return;
-    }
-    if (existingNumber) {
-      alert('Such number already exists');
-      return;
-    }
-    dispatch(updateContact(editedContact));
+    // if (existingName) {
+    //   alert('Such name  already exists');
+    //   return;
+    // }
+    // if (existingNumber) {
+    //   alert('Such number already exists');
+    //   return;
+    // }
+    dispatch(
+      updateContact({ ...editedContact, id }).then(() => {
+        onClose();
+      })
+    );
     actions.resetForm();
   };
 
@@ -78,14 +81,14 @@ export const ModalWindow = () => {
         <ModalBody pb={6}>
           <Formik
             initialValues={{
-              name: '',
-              number: '',
+              name,
+              number,
             }}
             validationSchema={contactSchema}
             onSubmit={handleSubmit}
           >
-            {({ handleSubmit }) => (
-              <Form onSubmit={handleSubmit}>
+            {() => (
+              <Form>
                 <VStack
                   autoComplete="true"
                   spacing={5}
@@ -125,7 +128,7 @@ export const ModalWindow = () => {
                     />
                     <ErrorMessage component="div" name="name" />
                   </FormControl>
-                  <Button
+                  {/* <Button
                     type="submit"
                     variant="solid"
                     bgColor="brand.100"
@@ -133,8 +136,8 @@ export const ModalWindow = () => {
                     mx="auto"
                     color="brand.900"
                   >
-                    Add contact
-                  </Button>
+                    Update contact
+                  </Button> */}
                 </VStack>
               </Form>
             )}
@@ -142,18 +145,35 @@ export const ModalWindow = () => {
         </ModalBody>
 
         <ModalFooter>
-          <Button
-            type="submit"
-            variant="solid"
-            bgColor="brand.100"
-            _hover={{ bgColor: 'brand.700', color: '#fff' }}
-            mx="auto"
-            color="brand.900"
-            mr={3}
-          >
-            Save
-          </Button>
-          <Button onClick={onClose}>Cancel</Button>
+          <ButtonGroup display="flex">
+            <Button
+              onClose={() => {
+                onClose();
+              }}
+              type="submit"
+              variant="solid"
+              bgColor="brand.100"
+              _hover={{ bgColor: 'brand.700', color: '#fff' }}
+              mx="auto"
+              color="brand.900"
+              mr={3}
+            >
+              Save
+            </Button>
+            <Button
+              onClick={() => {
+                onClose();
+              }}
+              variant="solid"
+              bgColor="brand.100"
+              _hover={{ bgColor: 'brand.700', color: '#fff' }}
+              mx="auto"
+              color="brand.900"
+              mr={3}
+            >
+              Cancel
+            </Button>
+          </ButtonGroup>
         </ModalFooter>
       </ModalContent>
     </Modal>,

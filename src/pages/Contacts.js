@@ -1,8 +1,7 @@
 import { ContactForm } from 'components/ContactForm';
 import { ContactList } from 'components/ContactList';
 import { Filter } from 'components/Filter';
-import { ModalWindow } from 'components/Modal';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchContacts } from 'redux/contacts/operations';
 
@@ -17,15 +16,10 @@ const Contacts = () => {
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
   const dispatch = useDispatch();
-  const [isModal, setIsModal] = useState(false);
 
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
-
-  const toggleModal = () => {
-    setIsModal(isModal === !isModal);
-  };
 
   return (
     <>
@@ -44,7 +38,6 @@ const Contacts = () => {
           No contacts
         </b>
       )}
-      {isModal && <ModalWindow onClose={toggleModal} />}
     </>
   );
 };

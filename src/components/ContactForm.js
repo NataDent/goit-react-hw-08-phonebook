@@ -1,4 +1,4 @@
-import { Formik, Field, ErrorMessage } from 'formik';
+import { Formik, Field, ErrorMessage, Form } from 'formik';
 import {
   Box,
   Button,
@@ -13,7 +13,6 @@ import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/contacts/operations';
 import { selectContacts } from 'redux/contacts/selectors';
-import { Form } from 'react-router-dom';
 
 const contactSchema = Yup.object().shape({
   name: Yup.string().min(2, 'Too short!').required('Required'),
@@ -65,8 +64,8 @@ export const ContactForm = () => {
         validationSchema={contactSchema}
         onSubmit={handleSubmit}
       >
-        {({ handleSubmit }) => (
-          <Form onSubmit={handleSubmit}>
+        {() => (
+          <Form>
             <VStack autoComplete="true" spacing={5} m="auto" align="flex-start">
               <FormControl>
                 <FormLabel htmlFor="name" color="brand.900">

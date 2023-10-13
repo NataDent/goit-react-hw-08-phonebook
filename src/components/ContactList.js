@@ -1,20 +1,19 @@
 import { selectFilteredContacts } from 'redux/contacts/selectors';
-
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteContact } from 'redux/contacts/operations';
-
 import {
   Heading,
   UnorderedList,
   ListItem,
   Button,
   Text,
-  ButtonGroup,
   useDisclosure,
+  HStack,
 } from '@chakra-ui/react';
+import { ModalWindow } from './Modal';
 
 export const ContactList = () => {
-  const { isOpen, onOpen } = useDisclosure();
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const dispatch = useDispatch();
   const filteredContacts = useSelector(selectFilteredContacts);
   const handleDelete = id => dispatch(deleteContact(id));
@@ -38,20 +37,19 @@ export const ContactList = () => {
           display="flex"
           justifyContent="space-between"
           p={1}
-          listStyle="none"
-          onClick={isOpen}
+          onClick={onOpen}
         >
           <Text fontSize={18} fontWeight="bold" color="brand.900">
             {name}: {number}
           </Text>
-          <ButtonGroup gap={1}>
+          <HStack gap={1}>
             <Button
               variant="solid"
               bgColor="brand.100"
               color="brand.900"
               _hover={{ bgColor: 'brand.700', color: '#fff' }}
               type="button"
-              onClick={onOpen}
+              onClick={isOpen}
             >
               Edit
             </Button>
@@ -65,7 +63,16 @@ export const ContactList = () => {
             >
               Delete
             </Button>
-          </ButtonGroup>
+          </HStack>
+          {isOpen && (
+            <ModalWindow
+              isOpen={isOpen}
+              name={name}
+              number={number}
+              onClose={onClose}
+              id={id}
+            />
+          )}
         </ListItem>
       ))}
     </UnorderedList>
