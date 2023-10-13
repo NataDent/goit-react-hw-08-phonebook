@@ -58,9 +58,12 @@ export const ModalWindow = ({ isOpen, name, number, onClose, id }) => {
       onClose={onClose}
     >
       <ModalOverlay />
+
       <ModalContent>
         <ModalHeader>Update your contact</ModalHeader>
+
         <ModalCloseButton />
+
         <ModalBody pb={6}>
           <Formik
             initialValues={{
