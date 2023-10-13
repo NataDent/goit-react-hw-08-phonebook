@@ -37,11 +37,9 @@ export const ModalWindow = ({ isOpen, name, number, onClose, id }) => {
   const dispatch = useDispatch();
 
   const handleUpdate = (editedContact, actions) => {
-    dispatch(
-      updateContact({ ...editedContact, id }).then(() => {
-        onClose();
-      })
-    );
+    dispatch(updateContact({ ...editedContact, id })).then(() => {
+      onClose();
+    });
     actions.resetForm();
   };
 
