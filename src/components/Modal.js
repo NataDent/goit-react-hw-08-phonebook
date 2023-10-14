@@ -1,8 +1,5 @@
 import {
   Button,
-  FormControl,
-  FormLabel,
-  Input,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -10,14 +7,20 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
-  VStack,
 } from '@chakra-ui/react';
-import { ErrorMessage, Field, Formik, Form } from 'formik';
+import { Field, Formik } from 'formik';
 import React from 'react';
 import { createPortal } from 'react-dom';
 import * as Yup from 'yup';
 import { updateContact } from 'redux/contacts/operations';
 import { useDispatch } from 'react-redux';
+import {
+  AddButton,
+  ErrorMessageStyled,
+  FieldWrapper,
+  FormStyled,
+  Label,
+} from './ContactForm/ContactFormStyled';
 
 const modalRoot = document.querySelector('#modal-root');
 
@@ -69,55 +72,21 @@ export const ModalWindow = ({ isOpen, name, number, onClose, id }) => {
             validationSchema={contactSchema}
             onSubmit={handleUpdate}
           >
-            {() => (
-              <Form autoComplete="true">
-                <VStack spacing={5} m="auto" align="flex-start">
-                  <FormControl>
-                    <FormLabel htmlFor="name" color="brand.900">
-                      Name
-                    </FormLabel>
-                    <Field
-                      as={Input}
-                      id="name"
-                      name="name"
-                      placeholder="Name:"
-                      _placeholder={{ color: 'brand.300' }}
-                      size="lg"
-                      variant="outline"
-                      focusBorderColor="brand.600"
-                    />
-                    <ErrorMessage component="div" name="name" />
-                  </FormControl>
+            <FormStyled>
+              <FieldWrapper>
+                <Label htmlFor="name">Name</Label>
+                <Field id="name" name="name" placeholder="Jane" />
+                <ErrorMessageStyled component="div" name="name" />
+              </FieldWrapper>
 
-                  <FormControl>
-                    <FormLabel htmlFor="number" color="brand.900">
-                      Phone number
-                    </FormLabel>
-                    <Field
-                      as={Input}
-                      id="number"
-                      name="number"
-                      placeholder="Phone: 123-45-67"
-                      _placeholder={{ color: 'brand.300' }}
-                      size="lg"
-                      variant="outline"
-                      focusBorderColor="brand.600"
-                    />
-                    <ErrorMessage component="div" name="name" />
-                  </FormControl>
-                  <Button
-                    type="submit"
-                    variant="solid"
-                    bgColor="brand.100"
-                    _hover={{ bgColor: 'brand.700', color: '#fff' }}
-                    mx="auto"
-                    color="brand.900"
-                  >
-                    Update contact
-                  </Button>
-                </VStack>
-              </Form>
-            )}
+              <FieldWrapper>
+                <Label htmlFor="number">Number</Label>
+                <Field id="number" name="number" placeholder="123-45-67" />
+                <ErrorMessageStyled component="div" name="number" />
+              </FieldWrapper>
+
+              <AddButton type="submit">Update contact</AddButton>
+            </FormStyled>
           </Formik>
         </ModalBody>
 
