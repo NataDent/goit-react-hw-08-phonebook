@@ -1,6 +1,7 @@
 import { Button, Flex, Heading, Text } from '@chakra-ui/react';
 import { useAuth } from 'components/hooks/useAuth';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { logOut } from 'redux/auth/operations';
 
 export const UserMenu = () => {
@@ -16,6 +17,7 @@ export const UserMenu = () => {
         </Heading>
         {''}!
       </Text>
+      <Link to="/profile">Profile</Link>
       <Button
         variant="solid"
         bgColor="brand.100"

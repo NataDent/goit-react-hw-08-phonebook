@@ -21,8 +21,8 @@ export const ContactList = () => {
         Your Contacts
       </Heading>
 
-      {filteredContacts.map(({ id, name, number }) => (
-        <ContactListItem id={id} name={name} number={number} />
+      {filteredContacts.map(({ _id, name, number }) => (
+        <ContactListItem _id={_id} name={name} number={number} />
       ))}
     </UnorderedList>
   );

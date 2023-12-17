@@ -1,7 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-axios.defaults.baseURL = ' https://connections-api.herokuapp.com/';
+// axios.defaults.baseURL = ' https://connections-api.herokuapp.com/';
+axios.defaults.baseURL = 'http://localhost:8000';
 
 const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -66,6 +67,25 @@ export const refreshUser = createAsyncThunk(
       setAuthHeader(persistedToken);
       const { data } = await axios.get('users/current');
       return data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);
+
+export const updateAvatar = createAsyncThunk(
+  'auth/updateAvatar',
+  async (file, thunkAPI) => {
+    try {
+      const formData = new FormData();
+      formData.append('avatar', formData);
+      const { data } = await axios.patch('users/avatars', formData, {
+        headers: {
+          'Content-Type': 'multipart/formdata',
+        },
+      });
+
+      return data.avatarURL;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }

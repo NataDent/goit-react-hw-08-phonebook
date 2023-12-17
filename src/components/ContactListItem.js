@@ -4,13 +4,14 @@ import { deleteContact } from 'redux/contacts/operations';
 import { ModalWindow } from './Modal';
 import { useState } from 'react';
 
-export const ContactListItem = ({ id, name, number }) => {
+export const ContactListItem = ({ _id, name, number }) => {
   const [isOpen, setIsOpen] = useState(false);
   const dispatch = useDispatch();
-  const handleDelete = id => dispatch(deleteContact(id));
+  const handleDelete = _id => dispatch(deleteContact(_id));
   const toggleModal = () => setIsOpen(prev => !prev);
+  console.log(_id);
   return (
-    <ListItem key={id} display="flex" justifyContent="space-between" p={1}>
+    <ListItem key={_id} display="flex" justifyContent="space-between" p={1}>
       <Text fontSize={18} fontWeight="bold" color="brand.900">
         {name}: {number}
       </Text>
@@ -31,7 +32,7 @@ export const ContactListItem = ({ id, name, number }) => {
           color="brand.900"
           _hover={{ bgColor: 'brand.700', color: '#fff' }}
           type="button"
-          onClick={() => handleDelete(id)}
+          onClick={() => handleDelete(_id)}
         >
           Delete
         </Button>
@@ -41,7 +42,7 @@ export const ContactListItem = ({ id, name, number }) => {
           isOpen={isOpen}
           name={name}
           number={number}
-          id={id}
+          id={_id}
           onClose={toggleModal}
         />
       )}
